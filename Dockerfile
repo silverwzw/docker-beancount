@@ -18,11 +18,11 @@ RUN \
   echo "AllowUsers abc" >> /etc/ssh/sshd_config && \
   /app/code-server/bin/code-server --extensions-dir /config/extensions \
     --install-extension dongfg.vscode-beancount-formatter \
-	--install-extension lencerf.beancount
+    --install-extension lencerf.beancount
 
 COPY ./build-data/start_fava /custom-services.d/start_fava
 COPY ./build-data/start_ssh /custom-services.d/start_ssh
-COPY ./build-data/set_passwd /custom-services.d/set_passed
+COPY ./build-data/set_passwd /custom-services.d/set_passwd
 
 EXPOSE 8443
 EXPOSE 5000
