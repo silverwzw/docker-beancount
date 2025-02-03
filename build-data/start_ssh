@@ -1,3 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 service ssh start
+sleep infinity
