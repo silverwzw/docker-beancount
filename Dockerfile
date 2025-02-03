@@ -17,7 +17,6 @@ RUN \
   echo "Port 2222" >> /etc/ssh/sshd_config && \
   echo "AllowUsers abc" >> /etc/ssh/sshd_config && \
   /app/code-server/bin/code-server --extensions-dir /config/extensions \
-    --install-extension dongfg.vscode-beancount-formatter \
     --install-extension lencerf.beancount
 
 COPY ./build-data/start_fava /custom-services.d/start_fava
@@ -34,4 +33,5 @@ ENV PATH="$PATH:/config/.local/bin"
 ENV DEFAULT_WORKSPACE="/bean"
 ENV PASSWORD_HASH="\$1\$/ehE7oaa\$5wh58GfqogHQ6H107w64j/"
 
-
+RUN jq '."beancount.mainBeanFile" = "'$(realpath -m --relative-to=$DEFAULT_WORKSPACE $BEANCOUNT_FILE)'" | ."beancount.python3Path" = "/config/.local/share/pipx/venvs/beancount/bin/python3"' /config/data/Machine/settings.json > /config/data/Machine/setting.json
+# RUN jq '."beancount.mainBeanFile" = "'$(realpath -m --relative-to=$DEFAULT_WORKSPACE $BEANCOUNT_FILE)'" | ."beancount.python3Path" = "/config/.local/share/pipx/venvs/beancount/bin/python3"' /config/.vscode-server/data/Machine/settings.json > /config/.vscode-server/data/Machine/setting.json
