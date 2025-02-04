@@ -1,3 +1,5 @@
 #!/usr/bin/with-contenv bash
 
+echo Setting user password
 usermod -p $PASSWORD_HASH abc
+sleep infinity

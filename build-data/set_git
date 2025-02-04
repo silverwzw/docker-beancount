@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+
+echo Setting git user.name and user.email
+if [[ -z "$GIT_USER" ]]; then
+  echo Env GIT_USER not specified
+else
+  git config --global user.name $GIT_USER
+fi
+
+echo Setting git user.name and user.email
+if [[ -z "$GIT_EMAIL" ]]; then
+  echo Env GIT_EMAIL not specified
+else
+  git config --global user.email $GIT_EMAIL
+fi
+
+sleep infinity
