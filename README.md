@@ -1,20 +1,22 @@
 # silverwzw/docker-beancount
 
-silverwzw/docker-beancount is a repository for the Dockerfile of silverwzw/beancount-server
+silverwzw/docker-beancount is a repository for the Dockerfile of [silverwzw/beancount-server](https://hub.docker.com/r/silverwzw/beancount-server)
 
 # silverwzw/beancount-server
 
-silverwzw/docker-beancount is a docker image for beancount users. The image has the following service/binary installed:
+silverwzw/beancount-server is a docker image for [beancount](https://beancount.github.io) users. The image has the following services/executables installed:
 
 | Name | Explanation |
 | :----: | --- |
 | beancount | The beancount executable. |
 | fava | The offical beancount Web UI. |
+| pdf2text | Utility to convert pdf to text, useful for beancount importer. |
 | code-server | Web-based editor with `Beancount` and `Beancount Formatter` extension installed. |
 | openssh-server | Provides ssh service for VSCode remote to edit the beancount files. |
 | python3 | Execution environment for beancount plugins. |
+| git | Manage your beancount files.  |
 
-This docker image is based on linuxserver/code-server
+This docker image is based on linuxserver/code-server. Dockerfile can be found at [silverwzw/docker-beancount](https://github.com/silverwzw/docker-beancount/).
 
 # Usage
 
@@ -149,4 +151,4 @@ Sample config snippet:
 
 ### python3 path for the beancount Extension
 
-If you want to use the `beancount` extension for VSCode, you may want to set the python3 path to `/config/.local/share/pipx/venvs/beancount/bin/python3`. This the path to the virtual environment where beancount is installed.
+If you want to use the `beancount` extension for VSCode, you may want to set the python3 path to `/config/.local/share/pipx/venvs/fava/bin/python3`. This the path to the virtual environment where beancount is installed.

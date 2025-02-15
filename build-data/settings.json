@@ -1,4 +1,4 @@
 {
   "beancount.mainBeanFile": "main.bean",
-  "beancount.python3Path": "/config/.local/share/pipx/venvs/beancount/bin/python3"
+  "beancount.python3Path": "/config/.local/share/pipx/venvs/fava/bin/python3"
 }
