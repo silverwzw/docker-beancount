@@ -24,7 +24,7 @@ RUN \
 COPY ./build-data/start_fava /custom-services.d/start_fava
 COPY ./build-data/start_ssh /custom-services.d/start_ssh
 COPY ./build-data/set_passwd /custom-services.d/set_passwd
-COPY ./build-data/set_passwd /custom-services.d/set_git
+COPY ./build-data/set_git /custom-services.d/set_git
 COPY ./build-data/settings.json /config/data/Machine/settings.json
 
 RUN chown root:root /custom-services.d/start_fava /custom-services.d/start_ssh /custom-services.d/start_ssh && \
