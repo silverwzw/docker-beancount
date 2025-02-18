@@ -4,9 +4,10 @@ WORKDIR /tmp
 
 RUN \
   apt-get update && \
-  apt-get install -y python3 pipx git openssh-server && \
+  apt-get install -y python3 pipx git openssh-server poppler-utils && \
   apt-get clean && \
   pipx install fava && \
+  pipx inject fava beancount beanquery beangulp beanprice beangrow && \
   pipx ensurepath && \
   mkdir /custom-services.d && \
   mkdir -p --mode=700 /config/data/Machine && chmod 755 /config/data && \
@@ -16,9 +17,6 @@ RUN \
   /app/code-server/bin/code-server --extensions-dir /config/extensions \
     --install-extension dongfg.vscode-beancount-formatter \
     --install-extension lencerf.beancount && \
-  wget https://dl.xpdfreader.com/xpdf-tools-linux-4.05.tar.gz && \
-  tar -xvzf xpdf-tools-linux-4.05.tar.gz -C /usr/share && \
-  ln -s /usr/share/xpdf-tools-linux-4.05/bin64/pdftotext /usr/bin/pdftotext && \
   rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 COPY ./build-data/start_fava /custom-services.d/start_fava

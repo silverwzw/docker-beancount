@@ -8,12 +8,12 @@ silverwzw/beancount-server is a docker image for [beancount](https://beancount.g
 
 | Name | Explanation |
 | :----: | --- |
-| beancount | The beancount executable. |
-| fava | The offical beancount Web UI. |
-| pdf2text | Utility to convert pdf to text, useful for beancount importer. |
+| beancount | Beancount v3 and utilities (`beangulp`, `beanquery`, `beanprice` and `beangrow`). |
+| fava | A nice Web UI for beancount. |
+| poppler-util | Provides the `pdftotext` utility, commonly used by beancount importers. |
 | code-server | Web-based editor with `Beancount` and `Beancount Formatter` extension installed. |
 | openssh-server | Provides ssh service for VSCode remote to edit the beancount files. |
-| python3 | Execution environment for beancount plugins. |
+| python3 | Execution environment for beancount plugins and importers. |
 | git | Manage your beancount files.  |
 
 This docker image is based on linuxserver/code-server. Dockerfile can be found at [silverwzw/docker-beancount](https://github.com/silverwzw/docker-beancount/).
@@ -149,6 +149,10 @@ Sample config snippet:
       - ./path/to/ssh/host/keys/ssh_host_rsa_key.pub:/etc/ssh/ssh_host_rsa_key.pub:ro
 ```
 
-### python3 path for the beancount Extension
+### python3 path for the beancount VSCode/code-server extension
 
 If you want to use the `beancount` extension for VSCode, you may want to set the python3 path to `/config/.local/share/pipx/venvs/fava/bin/python3`. This the path to the virtual environment where beancount is installed.
+
+## Python venv
+
+Only one venv (`fava`) is used in this docker. Fava, beancount and the bean* utilities are all installed in the `fava` venv.
