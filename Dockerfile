@@ -14,6 +14,8 @@ RUN \
   usermod --shell /bin/bash abc && \
   echo "Port 2222" >> /etc/ssh/sshd_config && \
   echo "AllowUsers abc" >> /etc/ssh/sshd_config && \
+  cat /app/code-server/lib/vscode/product.json | jq '. + { extensionsGallery: { serviceUrl: "https://marketplace.visualstudio.com/_apis/public/gallery", itemUrl: "https://marketplace.visualstudio.com/items" } } ' > /tmp/product.json && \
+  cat /tmp/product.json > /app/code-server/lib/vscode/product.json && \
   /app/code-server/bin/code-server --extensions-dir /config/extensions \
     --install-extension dongfg.vscode-beancount-formatter \
     --install-extension lencerf.beancount && \
